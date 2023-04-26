@@ -1,0 +1,52 @@
+html {
+    font-size: 22px;
+}
+
+body {
+    background-color: #333;
+    color: whitesmoke;
+}
+
+button {
+    padding: 20px, 15px;
+    margin: 5px;
+    height: 35px;
+    width: 60px;
+    border-radius: 4px;
+    background-color: rgb(200, 197, 197);
+
+}
+
+button:hover {
+    background-color: rgb(250, 253, 254);
+}
+
+textarea {
+    overflow: hidden;
+    white-space: nowrap;
+    /* margin-left: 5px; */
+    padding: 20px;
+    resize: none;
+    width: 510px;
+    border-style: groove;
+    border-radius: 5px;
+    position: relative;
+    left: 450px;
+    font-size: xx-large;
+    /* direction:rtl; */
+    
+}
+
+.main {
+    background-color: rgba(251, 252, 253, 0.235);
+    margin-top: 20px;
+
+}
+
+.firstrow {
+    position: relative;
+    left: 450px;
+    bottom: 2px;
+    block-size: 50px;
+    width: 550px;
+}
