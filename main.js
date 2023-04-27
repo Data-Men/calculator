@@ -37,18 +37,18 @@ function number() {
     const btn = document.getElementById(index.toString());
     btn.onclick = () => btnClick(index);
   }
-  document.getElementById("dot").onclick = () => {
-    decimal();
-  };
+  
+  document.getElementById("dot").onclick = () => decimal();
+
   function btnClick(id) {
     const textarea = document.getElementById("textarea");
     textarea.value += id.toString();
     textarea.focus();
   }
-  //FIXME not working at this point
+
   function decimal() {
     const textarea = document.getElementById("textarea");
-    if (textarea.value.toString().charAt(textarea.value.length) == ".") {
+    if (textarea.value.toString().charAt(textarea.value.length - 1) != ".") {
       textarea.value += ".";
       textarea.focus();
     }

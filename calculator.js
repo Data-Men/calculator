@@ -1,4 +1,3 @@
-const textarea = document.getElementById("textarea");
 
 calculation = (text) => {
   console.log(text);
@@ -43,6 +42,8 @@ calculation = (text) => {
 
 //complete key management
 keyprevent = (event) => {
+const textarea = document.getElementById("textarea");
+
   const text = textarea.value.toString();
 
   //not entering to a new line
