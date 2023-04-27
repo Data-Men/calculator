@@ -1,11 +1,9 @@
-window.onload = () => {
-  const textarea = document.getElementById("textarea");
-};
+const textarea = document.getElementById("textarea");
 
 calculation = (text) => {
+  console.log(text);
   if (isNaN(text)) {
-    let a, b;
-    c = "";
+    let a, b, c;
     let result = 0;
     operator.forEach((value, index) => {
       if (value != ".") {
@@ -57,9 +55,9 @@ keyprevent = (event) => {
     event.returnValue = false;
     if (!operator.includes(text.charAt(text.length - 1))) {
       if (event.key == "*") {
-        textarea.value += " x ";
+        textarea.value += "x";
       } else {
-        textarea.value += " ÷ ";
+        textarea.value += "÷";
       }
     }
   }

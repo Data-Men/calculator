@@ -1,11 +1,12 @@
 document.addEventListener("DOMContentLoaded", number);
-const operator = ["÷", "x","+", "-", "."];
-window.onload = () => {
-  const textarea = document.getElementById("textarea");
+const operator = ["-", "+", "x", "÷", "."];
 
+window.onload = (event) => {
+  const textarea = document.getElementById("textarea");
   document.getElementById("ROD").addEventListener("click", clicked);
 
   let operators = ["plus", "minus", "multiply", "divide"];
+
   operators.forEach((value, index) => {
     document
       .getElementById(value)
@@ -36,7 +37,9 @@ function number() {
     const btn = document.getElementById(index.toString());
     btn.onclick = () => btnClick(index);
   }
-  document.getElementById("dot").onclick = ()=>{decimal()};
+  document.getElementById("dot").onclick = () => {
+    decimal();
+  };
   function btnClick(id) {
     const textarea = document.getElementById("textarea");
     textarea.value += id.toString();
@@ -75,4 +78,3 @@ function addOperator(opration) {
 
   textarea.focus();
 }
-
