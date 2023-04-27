@@ -55,6 +55,7 @@ function number() {
 function addOperator(opration) {
   const textarea = document.getElementById("textarea");
   const len = textarea.value.toString().length;
+  console.log(len);
   if (!operator.includes(textarea.value.toString().charAt(len - 1))) {
     switch (opration) {
       case "plus":

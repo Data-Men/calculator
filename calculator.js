@@ -57,9 +57,9 @@ keyprevent = (event) => {
     event.returnValue = false;
     if (!operator.includes(text.charAt(text.length - 1))) {
       if (event.key == "*") {
-        textarea.value += "x";
+        textarea.value += " x ";
       } else {
-        textarea.value += "÷";
+        textarea.value += " ÷ ";
       }
     }
   }
