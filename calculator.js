@@ -2,12 +2,41 @@ window.onload = () => {
   const textarea = document.getElementById("textarea");
 };
 
-calculation = () => {
-  const text = textarea.value.toString();
-  if (text.includes("+")) {
-    console.log(text);
-    const a = text.split('+')
-    textarea.value = Number(a[0]) + Number(a[1]);
+calculation = (text) => {
+  if (isNaN(text)) {
+    let a,
+      b,
+      c = "";
+    let result = 0;
+    operator.forEach((value, index) => {
+      if (value != ".") {
+        const spliter = text.indexOf(value);
+        const len = text.length;
+        if (spliter > -1) {
+          let x, y;
+          switch (value) {
+            case "÷":
+              a = text.slice(0, spliter);
+              b = text.slice(spliter + 1, len);
+
+              x = Number(calculation(a));
+              y = Number(calculation(b));
+
+              result = Number(x) / Number(y);
+              break;
+            case "x":
+              break;
+            case "+":
+              break;
+            case "-":
+              break;
+          }
+        }
+      }
+    });
+    return Number(result);
+  } else {
+    return Number(text);
   }
 };
 
@@ -18,7 +47,7 @@ keyprevent = (event) => {
   //not entering to a new line
   if (event.key == "Enter") {
     event.returnValue = false;
-    calculation();
+    textarea.value = calculation(text);
   }
   //replacing divide and multiply symbols
   if (["/", "*"].includes(event.key)) {

@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", number);
-const operator = ["+", "-", "÷", "x", "."];
+const operator = ["÷", "x","+", "-", "."];
 window.onload = () => {
   const textarea = document.getElementById("textarea");
 
