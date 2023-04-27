@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", number);
-const operator = ["-", "+", "x", "÷", "."];
+const operator = ["-", "+", "x", "÷", "%", "."];
 
 window.onload = (event) => {
   const textarea = document.getElementById("textarea");
@@ -15,6 +15,44 @@ window.onload = (event) => {
 
   document.getElementById("CE").addEventListener("click", () => {
     textarea.value = "";
+    textarea.focus();
+  });
+  document.getElementById("ps").addEventListener("click", () => {
+    textarea.value += "(";
+    textarea.focus();
+  });
+  document.getElementById("pe").addEventListener("click", () => {
+    textarea.value += ")";
+    textarea.focus();
+  });
+  document.getElementById("factorial").addEventListener("click", () => {
+    textarea.value += "!";
+    textarea.focus();
+  });
+  document.getElementById("mod").addEventListener("click", () => {
+    textarea.value += "%";
+    textarea.focus();
+  });
+  document.getElementById("eularNo").addEventListener("click", () => {
+    if (
+      operator.includes(textarea.value.charAt(textarea.value.length - 1)) ||
+      textarea.value.length == 0
+    ) {
+      textarea.value += "e";
+    } else {
+      textarea.value += "xe";
+    }
+    textarea.focus();
+  });
+  document.getElementById("pi").addEventListener("click", () => {
+    if (
+      operator.includes(textarea.value.charAt(textarea.value.length - 1)) ||
+      textarea.value.length == 0
+    ) {
+      textarea.value += "π";
+    } else {
+      textarea.value += "xπ";
+    }
     textarea.focus();
   });
   textarea.focus();
@@ -37,7 +75,7 @@ function number() {
     const btn = document.getElementById(index.toString());
     btn.onclick = () => btnClick(index);
   }
-  
+
   document.getElementById("dot").onclick = () => decimal();
 
   function btnClick(id) {

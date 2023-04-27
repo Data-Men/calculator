@@ -1,6 +1,5 @@
-
 calculation = (text) => {
-  console.log(text);
+  // console.log(text);
   if (isNaN(text)) {
     let a, b, c;
     let result = 0;
@@ -15,13 +14,17 @@ calculation = (text) => {
 
           x = Number(calculation(a));
           y = Number(calculation(b));
-
+          // console.log(x);
+          // console.log(y);
           switch (value) {
             case "÷":
               result = Number(x) / Number(y);
               break;
             case "x":
               result = Number(x) * Number(y);
+              break;
+            case "%": //may need to change this operation
+              result = Number(x) % Number(y);
               break;
             case "+":
               result = Number(x) + Number(y);
@@ -34,15 +37,28 @@ calculation = (text) => {
         }
       }
     });
+
+    if (text.toString().indexOf("!") > -1) {
+      let fact = 1;
+      const n = text.toString().slice(0, text.indexOf("!"));
+      for (let i = 1; i <= Number(n); i++) fact = fact * i;
+      result = fact;
+    } else if (text.toString().indexOf("e") > -1) {
+      result = Math.E;
+    } else if (text.toString().indexOf("π") > -1) {
+      result = Math.PI;
+    }
+
     return Number(result);
   } else {
+    // console.log(text);
     return Number(text);
   }
 };
 
 //complete key management
 keyprevent = (event) => {
-const textarea = document.getElementById("textarea");
+  const textarea = document.getElementById("textarea");
 
   const text = textarea.value.toString();
 
