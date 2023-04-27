@@ -4,33 +4,36 @@ window.onload = () => {
 
 calculation = (text) => {
   if (isNaN(text)) {
-    let a,
-      b,
-      c = "";
+    let a, b;
+    c = "";
     let result = 0;
     operator.forEach((value, index) => {
       if (value != ".") {
-        const spliter = text.indexOf(value);
+        const spliter = text.toString().indexOf(value);
         const len = text.length;
         if (spliter > -1) {
           let x, y;
+          a = text.slice(0, spliter);
+          b = text.slice(spliter + 1, len);
+
+          x = Number(calculation(a));
+          y = Number(calculation(b));
+
           switch (value) {
             case "÷":
-              a = text.slice(0, spliter);
-              b = text.slice(spliter + 1, len);
-
-              x = Number(calculation(a));
-              y = Number(calculation(b));
-
               result = Number(x) / Number(y);
               break;
             case "x":
+              result = Number(x) * Number(y);
               break;
             case "+":
+              result = Number(x) + Number(y);
               break;
             case "-":
+              result = Number(x) - Number(y);
               break;
           }
+          text = result;
         }
       }
     });
