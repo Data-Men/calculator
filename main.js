@@ -14,7 +14,7 @@ window.onload = (event) => {
   });
 
   document.getElementById("CE").addEventListener("click", () => {
-    textarea.value = "";
+    textarea.value = textarea.value.slice(0, textarea.value.length - 1);
     textarea.focus();
   });
   document.getElementById("ps").addEventListener("click", () => {

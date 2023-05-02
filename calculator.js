@@ -1,8 +1,17 @@
 calculation = (text) => {
   // console.log(text);
   if (isNaN(text)) {
-    let a, b, c;
+    let a, b;
     let result = 0;
+
+    if (text.toString().indexOf("(") > -1) {
+      //This is to solve brackets first
+      const p = text.toString().indexOf("(");
+      const q = text.toString().lastIndexOf(")");
+      let newtext = text.substring(p + 1, q);
+      result = calculation(newtext);
+      text = text.replace(newtext, result);
+    }
     operator.forEach((value, index) => {
       if (value != ".") {
         const spliter = text.toString().indexOf(value);
