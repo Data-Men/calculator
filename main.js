@@ -33,6 +33,26 @@ window.onload = (event) => {
     textarea.value += "%";
     textarea.focus();
   });
+  document.getElementById("sin").addEventListener("click", () => {
+    textarea.value += "sin(";
+    textarea.focus();
+  });
+  document.getElementById("cos").addEventListener("click", () => {
+    textarea.value += "cos(";
+    textarea.focus();
+  });
+  document.getElementById("tan").addEventListener("click", () => {
+    textarea.value += "tan(";
+    textarea.focus();
+  });
+  document.getElementById("Nlog").addEventListener("click", () => {
+    textarea.value += "ln(";
+    textarea.focus();
+  });
+  document.getElementById("log").addEventListener("click", () => {
+    textarea.value += "log(";
+    textarea.focus();
+  });
   document.getElementById("eularNo").addEventListener("click", () => {
     if (
       operator.includes(textarea.value.charAt(textarea.value.length - 1)) ||

@@ -1,20 +1,45 @@
 calculation = (text) => {
-  // console.log(text);
+  console.log(text);
   if (isNaN(text)) {
     let a, b;
-    let result = 0;
+    let result = text;
 
+    //This is to solve brackets first
     if (text.toString().indexOf("(") > -1) {
-      //This is to solve brackets first
       const p = text.toString().indexOf("(");
-      const q = text.toString().lastIndexOf(")");
+      let q = text.toString().lastIndexOf(")");
+
+      let count = 0;
+      let endCount = 0; //finding bracket pair
+      for (let index = p + 1; index < text.length; index++) {
+        if (text.toString()[index] == "(") {
+          count = count + 1;
+        } else if (text.toString()[index] == ")") {
+          if (count == endCount) {
+            q = index;
+            break;
+          }
+          endCount = endCount + 1;
+        }
+      }
+
       let newtext = text.substring(p + 1, q);
       result = calculation(newtext);
-      text = text.replace(newtext, result);
+      if (!isNaN(result)) {
+        text = text.replace(text.substring(p, q + 1), result);
+      } else {
+        text = text.replace(newtext, result);
+      }
+      if (text.indexOf("(") > -1) {
+        result = calculation(text);
+        text = result;
+      }
     }
+
     operator.forEach((value, index) => {
       if (value != ".") {
-        const spliter = text.toString().indexOf(value);
+        // const spliter = text.toString().indexOf(value);
+        const spliter = text.toString().lastIndexOf(value); //to solve same operator from left to right
         const len = text.length;
         if (spliter > -1) {
           let x, y;
@@ -47,11 +72,28 @@ calculation = (text) => {
       }
     });
 
+    //Other operators
     if (text.toString().indexOf("!") > -1) {
       let fact = 1;
       const n = text.toString().slice(0, text.indexOf("!"));
       for (let i = 1; i <= Number(n); i++) fact = fact * i;
       result = fact;
+    } else if (text.toString().indexOf("sin") > -1) {
+      const val = Math.sin(text.toString().slice(3, text.length - 1));
+      result = val;
+      console.log(val);
+    } else if (text.toString().indexOf("cos") > -1) {
+      const val = Math.cos(text.toString().slice(3, text.length - 1));
+      result = val;
+    } else if (text.toString().indexOf("tan") > -1) {
+      const val = Math.tan(text.toString().slice(3, text.length - 1));
+      result = val;
+    } else if (text.toString().indexOf("log") > -1) {
+      const val = Math.log10(text.toString().slice(3, text.length - 1));
+      result = val;
+    } else if (text.toString().indexOf("ln") > -1) {
+      const val = Math.log(text.toString().slice(3, text.length - 1));
+      result = val;
     } else if (text.toString().indexOf("e") > -1) {
       result = Math.E;
     } else if (text.toString().indexOf("π") > -1) {
@@ -74,7 +116,11 @@ keyprevent = (event) => {
   //not entering to a new line
   if (event.key == "Enter") {
     event.returnValue = false;
-    textarea.value = calculation(text);
+    textarea.value =
+      Math.round(
+        (Number.parseFloat(calculation(text)) + Number.EPSILON) * 10000000000
+      ) / 10000000000;
+    // textarea.value=Number.parseFloat(calculation(text)).toFixed(11)
   }
   //replacing divide and multiply symbols
   if (["/", "*"].includes(event.key)) {
