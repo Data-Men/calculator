@@ -1,5 +1,5 @@
 calculation = (text) => {
-  console.log(text);
+  // console.log(text);
   if (isNaN(text)) {
     let a, b;
     let result = text;
@@ -79,20 +79,40 @@ calculation = (text) => {
       for (let i = 1; i <= Number(n); i++) fact = fact * i;
       result = fact;
     } else if (text.toString().indexOf("sin") > -1) {
-      const val = Math.sin(text.toString().slice(3, text.length - 1));
+      let val = 0;
+      if (count == 0) {
+        val = Math.sin(text.toString().slice(3, text.length));
+      } else {
+        val = Math.sin(
+          Number(text.toString().slice(3, text.length)) * (Math.PI / 180)
+        );
+      }
       result = val;
-      console.log(val);
     } else if (text.toString().indexOf("cos") > -1) {
-      const val = Math.cos(text.toString().slice(3, text.length - 1));
+      let val = 0;
+      if (count == 0) {
+        val = Math.cos(text.toString().slice(3, text.length));
+      } else {
+        val = Math.cos(
+          Number(text.toString().slice(3, text.length)) * (Math.PI / 180)
+        );
+      }
       result = val;
     } else if (text.toString().indexOf("tan") > -1) {
-      const val = Math.tan(text.toString().slice(3, text.length - 1));
+      let val = 0;
+      if (count == 0) {
+        val = Math.tan(text.toString().slice(3, text.length));
+      } else {
+        val = Math.tan(
+          Number(text.toString().slice(3, text.length)) * (Math.PI / 180)
+        );
+      }
       result = val;
     } else if (text.toString().indexOf("log") > -1) {
-      const val = Math.log10(text.toString().slice(3, text.length - 1));
+      const val = Math.log10(text.toString().slice(3, text.length));
       result = val;
     } else if (text.toString().indexOf("ln") > -1) {
-      const val = Math.log(text.toString().slice(3, text.length - 1));
+      const val = Math.log(text.toString().slice(3, text.length));
       result = val;
     } else if (text.toString().indexOf("e") > -1) {
       result = Math.E;
@@ -118,8 +138,8 @@ keyprevent = (event) => {
     event.returnValue = false;
     textarea.value =
       Math.round(
-        (Number.parseFloat(calculation(text)) + Number.EPSILON) * 10000000000
-      ) / 10000000000;
+        (Number.parseFloat(calculation(text)) + Number.EPSILON) * 100000000000
+      ) / 100000000000;
     // textarea.value=Number.parseFloat(calculation(text)).toFixed(11)
   }
   //replacing divide and multiply symbols
