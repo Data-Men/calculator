@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", number);
-const operator = ["-", "+", "x", "÷", "%", "."];
+const operator = ["-", "+", "x", "÷", "%", "^","."];
 
 window.onload = (event) => {
   const textarea = document.getElementById("textarea");
@@ -51,6 +51,14 @@ window.onload = (event) => {
   });
   document.getElementById("log").addEventListener("click", () => {
     textarea.value += "log(";
+    textarea.focus();
+  });
+  document.getElementById("exponent").addEventListener("click", () => {
+    textarea.value += "^";
+    textarea.focus();
+  });
+  document.getElementById("sqrt").addEventListener("click", () => {
+    textarea.value += "√";
     textarea.focus();
   });
   document.getElementById("eularNo").addEventListener("click", () => {

@@ -51,6 +51,9 @@ calculation = (text) => {
           // console.log(x);
           // console.log(y);
           switch (value) {
+            case "^":
+              result=Math.pow(Number(x),Number(y))
+              break;
             case "÷":
               result = Number(x) / Number(y);
               break;
@@ -118,6 +121,8 @@ calculation = (text) => {
       result = Math.E;
     } else if (text.toString().indexOf("π") > -1) {
       result = Math.PI;
+    } else if (text.toString().indexOf("√") > -1) {
+      result = Math.sqrt(text.toString().slice(1, text.length));
     }
 
     return Number(result);
